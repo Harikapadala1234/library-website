@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SITAM | Library</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"> <img src="image/logo.png" alt="my company name" style="max-width:60px;
+                 height:auto;
+                 border-radius:100%;" id="first"><b style="font-size: 50px;"><strong>SITAM</strong></b></a>
+             </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><div class="dropdown">
+                        <span>Account</span>
+                    <div class="dropdown-content">
+                        <a href="account.html">Login</a>
+                        <a href="register.html">Sigin</a>
+                    </div>
+                </div>
+                <li><a href="books.html">BookRegistration</a></li>
+            <li><a href="index.html">logout</a></li>
+                </ul>
+            </nav>
+ 
+            <img src="image/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+    </header>
+ <!---------Account page-->
+ <div class="account-page">
+    <div class="container3">
+        <div class="row">
+            <div class="col-2">
+                <img src="image/book2.jpg" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                   <div class="form-btn">
+                    <span onclick="login()">Login</span>
+                    <span onclick="register()">Admin</span>
+                    <hr id="indicator">
+                   </div>
+                   <form id="loginform">
+                    <input type="text" placeholder="Username" width="10000px"><br>
+                    <input type="password" placeholder="Password">
+                    <button type="submit" class="btn">Login</button>
+                    <a href="changepass.html">Forgot password</a>
+                   </form> 
+                   <form id="regform">
+                    <input type="text" placeholder="Username"><br>
+                    <input type="Email" placeholder="Email"><br>
+                    <input type="password" placeholder="Password"><br>
+                    <button type="submit" class="btn">Register</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<!-----footer-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+           <h3>Download Our App</h3>
+           <p>Download App for Android and ios mobile phone.</p>
+           <div class="app-logo">
+            <img src="image/" >
+            <img src="image/" >
+           </div>
+           </div>
+           <div class="footer-col-2">
+           <img src="image/logo.jpg" alt="my company name" style="max-width:80px;
+           height:auto;
+           border-radius:100%;" id="first">
+           <p>Our Purpose is to Sustainably make the Pleasure and benefits of sports Accessible to the Many.</p>
+           </div>
+           <div class="footer-col-3">
+           <h3>Useful Links</h3>
+          <ul>
+            <li>Coupons</li>
+            <li>Blog post</li>
+            <li>Return Policy</li>
+            <li>Join Affiliate</li>
+          </ul>
+           </div>
+           <div class="footer-col-4">
+            <h3>Follow us</h3>
+           <ul>
+             <li>Facebook</li>
+             <li>Twitter</li>
+             <li>Instagram</li>
+             <li>YouTube</li>
+           </ul>
+            </div>
+
+        </div>
+        <hr>
+        <p class="copyright">Copyright 2020-Easy Tutorials</p>
+    </div>
+</div>
+<!---------js for toggle menu-->
+<script>
+    var MenuItems=document.getElementById("MenuItems");
+    MenuItems.style.maxHeight="0px";
+    function menutoggle(){
+        if(MenuItems.style.maxHeight=="0px"){
+            MenuItems.style.maxHeight="200px";
+        }
+        else{
+            MenuItems.style.maxHeight="0px";
+        }
+    }
+</script>
+<!------js for toggle form-->
+<script>
+    var loginform=document.getElementById("loginform");
+    var regform=document.getElementById("regform");
+    var indicator=document.getElementById("indicator");
+    function register(){
+        regform.style.transform ="translateX(0px)";
+        loginform.style.transform ="translateX(0px)";
+        indicator.style.transform ="translateX(100px)";
+    }
+    function login(){
+        regform.style.transform ="translateX(300px)";
+        loginform.style.transform ="translateX(300px)";
+        indicator.style.transform ="translateX(0px)";
+
+    }
+</script>
+</body>
+</html>

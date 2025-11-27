@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management Chatbot</title>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+}
+
+.chatbot-icon {
+    width: 80px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1);
+}
+
+.chatbot {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.chatbot-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.chatbot-messages div {
+    margin-bottom: 10px;
+}
+
+.chatbot-messages .user {
+    text-align: right;
+}
+
+#user-input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+        <div class="chatbot-icon" onclick="toggleChatbot()">
+            <img src="image/chatbaot.png" alt="Chatbot Icon">
+        </div>
+        <div class="chatbot" id="chatbot">
+            <div class="chatbot-header">
+                <h2>Chat with Us!</h2>
+                <span class="close-btn" onclick="toggleChatbot()">&times;</span>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        function toggleChatbot() {
+    const chatbot = document.getElementById('chatbot');
+    chatbot.style.display = chatbot.style.display === 'block' ? 'none' : 'block';
+}
+
+function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const userMessage = userInput.value.trim();
+    if (userMessage === "") return;
+
+    const messagesContainer = document.getElementById('chatbot-messages');
+    
+    // User message
+    const userDiv = document.createElement('div');
+    userDiv.className = 'user';
+    userDiv.textContent = userMessage;
+    messagesContainer.appendChild(userDiv);
+    
+    // Simulate chatbot response
+    setTimeout(() => {
+        const botDiv = document.createElement('div');
+        botDiv.className = 'bot';
+        botDiv.textContent = getChatbotResponse(userMessage);
+        messagesContainer.appendChild(botDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to bottom
+    }, 500);
+
+    userInput.value = "";
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to bottom
+}
+
+function getChatbotResponse(userMessage) {
+    const lowerMessage = userMessage.toLowerCase();
+    if (lowerMessage.includes("book")) {
+        return "Sure! Which book are you looking for?";
+    } else if (lowerMessage.includes("borrow")) {
+        return "You can borrow books for 2 weeks. Would you like to check the availability?";
+    } else if (lowerMessage.includes("return")) {
+        return "Please return your books to the front desk.";
+    } else if (lowerMessage.includes("help")) {
+        return "How can I assist you today?";
+    } else {
+        return "I'm sorry, I didn't understand that. Can you please rephrase?";
+    }
+}
+
+    </script>
+</body>
+</html>
